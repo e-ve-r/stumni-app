@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      min-height: 100vh;
+      background-color: #0A2540; /* Dark blue */
+      color: white;
+    }
+    .sidebar .nav-link {
+      color: white;
+      font-weight: 500;
+      margin: 5px 0;
+    }
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      background-color: #FFC107; /* Gold */
+      color: #0A2540;
+      border-radius: 5px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3">
+      <h3 class="text-center mb-4">Alumni Panel</h3>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" data-target="overview"><i class="bi bi-house me-2"></i> Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="students"><i class="bi bi-people me-2"></i> Students</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="mentorship"><i class="bi bi-lightbulb me-2"></i> Mentorship</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="events"><i class="bi bi-calendar-event me-2"></i> Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="bi bi-box-arrow-left me-2"></i> Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
+      <!-- Overview -->
+      <div id="overview" class="section active">
+        <h2>Welcome, Alumni 🎓</h2>
+        <p>This is your alumni dashboard. Use the sidebar to navigate between sections.</p>
+      </div>
+
+      <!-- Students -->
+      <div id="students" class="section">
+        <h2>Students</h2>
+        <p>Browse and connect with students looking for mentorship and guidance.</p>
+      </div>
+
+      <!-- Mentorship -->
+      <div id="mentorship" class="section">
+        <h2>Mentorship</h2>
+        <p>Offer guidance, schedule mentorship sessions, and support students on their career path.</p>
+      </div>
+
+      <!-- Events -->
+      <div id="events" class="section">
+        <h2>Events</h2>
+        <p>See upcoming events and workshops where you can participate as a mentor or speaker.</p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Sidebar click to switch sections
+  document.querySelectorAll('.sidebar .nav-link[data-target]').forEach(link => {
+    link.addEventListener('click', function () {
+      // remove active from all links
+      document.querySelectorAll('.sidebar .nav-link').forEach(el => el.classList.remove('active'));
+      this.classList.add('active');
+
+      // hide all sections
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+
+      // show selected
+      const targetId = this.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
