@@ -38,9 +38,5 @@ app.post("/submit", (req, res) => {
 
 // Start server
 app.listen(port, () => {
-<<<<<<< HEAD
   console.log(`Server running on port ${port}`);
-=======
-  console.log(`Listening on port ${port}`);
->>>>>>> df0ae5e (updated login page and CSS)
 });
